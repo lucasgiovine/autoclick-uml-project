@@ -1,6 +1,6 @@
 # AutoClick - Documentação para Projeto de Software
 
-Este trabalho é um fork do projeto AutoClick, tendo como objetivo desenvolver diagramas adicionais através da plataforma PlantUML.
+Este trabalho foi desenvolvido a partir do projeto acadêmico AutoClick, tendo como objetivo desenvolver diagramas adicionais através da plataforma PlantUML.
 
 ## Alunos integrantes da equipe AutoClick
 
