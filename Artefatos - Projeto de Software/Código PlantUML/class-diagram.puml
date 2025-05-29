@@ -1,0 +1,78 @@
+@startuml class-diagram
+class Veiculo {
+    -id: UUID
+    -descricao: String
+    -modelo: String
+    -marca: String
+    -cor: String
+    -placa: String
+    -preco: BigDecimal
+    -precoVenda: BigDecimal
+    -chassi: String
+    -dataCompra: LocalDate
+    -precoFipe: BigDecimal
+    -ano: Integer
+    -kmRodados: Integer
+    -renavam: String
+    -cpfCnpjUltimoDono: String
+    -nomeUltimoDono: String
+    -combustivel: String
+    -cambio: String
+    -imagem: Imagem
+    -cliente: Cliente
+    -tipo: TipoVeiculo
+    -cidade: String
+    -estado: String
+    -aceitaTroca: boolean
+}
+
+enum TipoVeiculo {
+    CARRO
+    MOTO
+    -role: String
+    +getRole(): String
+}
+
+class Imagem {
+    -id: UUID
+    -name: String
+    -type: String
+}
+
+abstract class Users {
+    #id: UUID
+    #nome: String
+    #email: String
+    #senha: String
+    #role: Role
+}
+
+enum Role {
+    GERENTE
+    FUNCIONARIO
+    CLIENTE
+}
+
+class Gerente {
+    -vendasAprovadas: Integer
+}
+
+class Funcionario {
+    -vendasPendentes: Integer
+    -vendasReprovadas: Integer
+    -vendasAprovadas: Integer
+    -vendasConcluidas: Integer
+    -vendasCanceladas: Integer
+}
+
+class Cliente {
+    -veiculos: List<Veiculo>
+}
+
+Users <|-- Gerente
+Users <|-- Funcionario
+Users <|-- Cliente
+Veiculo "1" -- "0..*" Imagem : possui >
+Veiculo "1" -left- "1" TipoVeiculo : possui >
+Cliente "1" -- "0..*" Veiculo : compra >
+Users "1" -- "1" Role : possui >

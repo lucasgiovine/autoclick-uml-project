@@ -1,0 +1,25 @@
+@startuml component-diagram
+title Diagrama de Componentes
+
+database "Database (MySQL)" as Database
+
+package "Backend (Spring Boot API)" {
+    [Controller] --> [Service]
+    [Service] --> [Repository]
+    [Service] --> [DTO]
+    [Repository] --> [Database]
+    [Controller] --> [DTO]
+    [Model] --> [Repository]
+    [Model] --> [Database]
+
+    [Security/JWT] --> [Controller]
+}
+
+package "Frontend (React)" {
+    [Interface Web] --> [Controller] : REST API
+}
+
+Database -[hidden]-> [Controller]
+
+
+@enduml

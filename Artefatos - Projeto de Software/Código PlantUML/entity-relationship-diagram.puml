@@ -1,0 +1,66 @@
+@startuml entity-relationship-diagram
+title Diagrama Entidade-Relacionamento
+
+entity "Veiculo" as V {
+  +id : UUID <<PK>>
+  descricao : String
+  modelo : String
+  marca : String
+  cor : String
+  placa : String
+  preco : decimal
+  preco_venda : decimal
+  chassi : String
+  data_compra : date
+  preco_fipe : decimal
+  ano : int
+  km_rodados : int
+  renavam : String
+  cpf_cnpj_ultimo_dono : String
+  nome_ultimo_dono : String
+  combustivel : String
+  cambio : String
+  cidade : String
+  estado : String
+  aceita_troca : boolean
+  tipo_id : int <<FK>>
+}
+
+entity "Imagem" as I {
+  +id : UUID <<PK>>
+  name : String
+  type : String
+  veiculo_id : UUID <<FK>>
+}
+
+entity "Users" as U {
+  +id : UUID <<PK>>
+  nome : String
+  email : String
+  senha : String
+  role : String
+}
+
+entity "Venda" as S {
+  +id : UUID <<PK>>
+  data : date
+  valor : decimal
+  cliente_id : UUID <<FK>>
+  veiculo_id : UUID <<FK>>
+  funcionario_id : UUID <<FK>>
+  status : String
+}
+
+entity "TipoVeiculo" as TV {
+  +id : int <<PK>>
+  nome : String
+}
+
+V ||-right-o{ I : "possui"
+V }o-left-|| TV : "tipo"
+U ||-down-o{ S : "realiza venda"
+V ||--o{ S : "vendido em"
+S }o-right-|| U : "atendido por (funcionario)"
+
+
+@enduml

@@ -1,0 +1,21 @@
+@startuml usecase
+left to right direction
+actor Cliente
+actor Funcionario
+actor Gerente
+
+Cliente --> (07. Visualizar veículos disponíveis)
+(07. Visualizar veículos disponíveis) ..> (08. Filtrar Veículos): <<extend>>
+(07. Visualizar veículos disponíveis) ..> (09. Comprar Veículo): <<extend>>
+
+
+Funcionario --> (01. Realizar venda)
+Funcionario --> (04. Gerenciar veiculos)
+Funcionario --> (02. Visualizar histórico de vendas)
+(02. Visualizar histórico de vendas) ..> ( 03. Gerar Relatórios): <<extend>>
+
+
+Gerente --> (05. Gerenciar usuários)
+Gerente --> (06. Analisar relatórios)
+Gerente --> (04. Gerenciar veiculos)
+@enduml

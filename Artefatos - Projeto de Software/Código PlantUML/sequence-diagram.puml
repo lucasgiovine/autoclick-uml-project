@@ -1,0 +1,35 @@
+@startuml sequenceDiagram
+skinparam Style strictuml
+title Diagrama de Sequência - Autoclick
+actor Cliente
+Cliente -> Sistema: Visualização e consulta de veiculo
+activate Sistema
+Sistema -> Database: Consulta veiculos no DB
+activate Database
+Database --> Sistema: Retorno de veiculos
+deactivate Database
+Sistema -> Cliente: Exibe veiculos
+deactivate Sistema
+alt Cliente seleciona veiculo
+    Cliente -> Sistema: Seleciona veiculo
+    Sistema -> Database: Consulta detalhes do veiculo
+    Database --> Sistema: Retorno de detalhes do veiculo
+    Sistema -> Cliente: Exibe detalhes do veiculo
+end
+opt Cliente deseja comprar veiculo
+    Cliente -> Vendedor: Solicita compra do veiculo
+    activate Vendedor
+    Vendedor -> Sistema: Registra compra no sistema
+    note left of Sistema: inspeção e autorização da compra
+    deactivate Vendedor
+    activate Sistema
+    Sistema -> Database: Atualiza status do veiculo
+    deactivate Sistema
+    activate Database
+    Database --> Sistema: retorno do status atualizado
+    deactivate Database
+    activate Sistema
+    Sistema -> Cliente: retorno do contrato
+    deactivate Sistema
+end
+@enduml

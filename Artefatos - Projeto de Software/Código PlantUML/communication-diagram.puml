@@ -1,0 +1,33 @@
+@startuml communication-diagram
+title Diagrama de Comunicação - Autoclick
+left to right direction
+
+package "Users"{
+    object Cliente
+    object Vendedor
+}
+
+package "Software"{
+    object Sistema
+    object Database
+}
+
+Cliente --> Sistema: Visualização e consulta de veiculo
+Sistema --> Database: Consulta veiculos no DB
+Database --> Sistema: Retorno de veiculos
+Sistema --> Cliente: exibe veiculos
+
+Cliente --> Sistema: Seleciona veiculo
+Sistema --> Database: Consulta detalhes do veiculo
+Database --> Sistema: Retorno de detalhes do veiculo
+Sistema --> Cliente: Exibe detalhes do veiculo
+
+Cliente --> Vendedor: Solicita compra do veiculo
+Vendedor --> Sistema: Registra compra no sistema
+Sistema --> Database: Atualiza status do veiculo
+Database --> Sistema: retorno do status atualizado
+Sistema --> Cliente: retorno do contrato
+
+
+
+

@@ -1,0 +1,30 @@
+@startuml state-diagram
+skinparam Style strictuml
+title Diagrama de Estados - Autoclick
+
+
+[*] --> Ocioso : Sistema aguardando interação
+
+Ocioso --> ConsultandoVeiculos : Cliente solicita consulta
+ConsultandoVeiculos : Sistema consulta veículos no DB
+ConsultandoVeiculos --> ExibindoVeiculos : Retorno da consulta
+
+ExibindoVeiculos --> ConsultandoDetalhes : Cliente seleciona veículo
+ExibindoVeiculos --> [*] : Cliente não seleciona veículo
+ExibindoVeiculos: Exibe veículos retornados
+
+ConsultandoDetalhes : Sistema consulta detalhes no DB
+ConsultandoDetalhes --> ExibindoDetalhes : Retorno dos detalhes
+
+ExibindoDetalhes --> Ocioso : Cliente não deseja comprar carro escolhido
+ExibindoDetalhes --> ProcessandoCompra : Cliente deseja comprar
+ExibindoDetalhes: Exibe ficha de detalhes do veículo selecionado
+
+ProcessandoCompra : Vendedor registra compra
+ProcessandoCompra : Sistema atualiza status no DB
+ProcessandoCompra --> FinalizandoCompra : Retorno do status atualizado
+
+FinalizandoCompra : Sistema retorna contrato ao cliente
+FinalizandoCompra --> [*] : Fim do processo
+
+@enduml
