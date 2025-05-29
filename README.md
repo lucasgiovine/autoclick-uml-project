@@ -1,2 +1,18 @@
-# autoclick
-Projeto desenvolvido para a disciplina de Projeto de Software, com o objetivo de documentar um sistema previamente desenvolvido por um dos membros do grupo. O sistema escolhido foi o AutoClick, desenvolvido pelo integrante Thiago Cury durante a disciplina de Trabalho Interdisciplinar.
+# AutoClick - Documentação para Projeto de Software
+
+Este trabalho é um fork do projeto AutoClick, tendo como objetivo desenvolver diagramas adicionais através da plataforma PlantUML.
+
+## Alunos integrantes da equipe AutoClick
+
+* Thiago Cury Freire
+* Tiago Almeida Santos
+* Vinicius Paranho Ribeiro
+* Arthur Candian de Azevedo
+* Artur Pedra
+
+## Alunos integrantes da equipe de Projeto de Software
+
+* Thiago Cury Freire
+* Pedro Porto
+* Vitor Rebula
+* Lucas Giovine
